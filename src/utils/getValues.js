@@ -22,7 +22,7 @@ async function getValues(spreadsheetId, range) {
   try {
     const result = await service.spreadsheets.values.get({
       spreadsheetId,
-      range,
+      range: 'recipes',
     });
     const numRows = result.data.values ? result.data.values.length : 0;
     console.log(`${numRows} rows retrieved.`);
