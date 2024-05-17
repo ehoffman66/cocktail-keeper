@@ -10,7 +10,7 @@ app.get('/readSheet', async (req, res) => {
 
   try {
     const result = await getValues(spreadsheetId, range);
-    res.json(result.data.values);
+    res.json(result);
   } catch (err) {
     console.error(err); // Log the error to the console
     res.status(500).send('Error reading from Google Sheets');

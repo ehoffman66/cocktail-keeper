@@ -20,15 +20,33 @@ async function getValues(spreadsheetId, range) {
   const service = google.sheets({ version: 'v4', auth });
 
   try {
-    const result = await service.spreadsheets.values.get({
+    const response = await service.spreadsheets.values.get({
       spreadsheetId,
       range: 'recipes',
     });
-    const numRows = result.data.values ? result.data.values.length : 0;
-    console.log(`${numRows} rows retrieved.`);
-    return result;
+
+    // Access the 2D array from the response
+    const result = response.data ? response.data.values : [];
+
+    // Separate the headers from the data
+    const headers = result[0];
+    const rows = result.slice(1);
+
+    // Map each row to an object with properties named after the headers
+    const json = rows.map(row => {
+      let obj = {};
+      headers.forEach((header, i) => {
+        obj[header] = row[i];
+      });
+      return obj;
+    });
+
+    console.log(json);
+
+    return json;
   } catch (err) {
-    // TODO (developer) - Handle exception
+    // Log the error
+    console.error(err);
     throw err;
   }
 }
