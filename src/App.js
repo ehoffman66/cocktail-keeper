@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Listbox } from '@headlessui/react';
 
 function App() {
   const [responseBody, setResponseBody] = useState([]);
@@ -23,21 +24,21 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
       {responseBody.map((cocktail, index) => (
-        <div key={index}>
-          <h2>{cocktail['Cocktail']}</h2>
-          <p>Base Spirit: {cocktail['Base Spirit']}</p>
-          <p>Ingredients:</p>
-          <ul>
+        <div key={index} className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl font-bold mb-4">{cocktail['Cocktail']}</h2>
+          <p className="text-gray-600 mb-2">Base Spirit: {cocktail['Base Spirit']}</p>
+          <p className="text-gray-600 mb-2">Ingredients:</p>
+          <Listbox as="ul" className="mb-2">
             {cocktail['Ingredients '] && cocktail['Ingredients '].trim() !== '' ?
               cocktail['Ingredients '].replace(/[\[\]']+/g,'').split(',').map((ingredient, i) => (
-                <li key={i}>{ingredient.trim()}</li>
+                <Listbox.Option as="li" key={i} className="text-gray-600">{ingredient.trim()}</Listbox.Option>
               ))
-              : <li>No ingredients listed</li>
+              : <li className="text-gray-600">No ingredients listed</li>
             }
-          </ul>
-          <p>Garnish: {cocktail['Garnish']}</p>
+          </Listbox>
+          <p className="text-gray-600">Garnish: {cocktail['Garnish']}</p>
         </div>
       ))}
     </div>
