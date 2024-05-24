@@ -1,8 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const { getValues } = require('./src/utils/getValues.js'); // Assuming getValues is in the same directory
 
 const app = express();
-const port = 3000;
+const port = 3001;
+
+// Use cors middleware to allow cross-origin requests
+app.use(cors());
 
 app.get('/readSheet', async (req, res) => {
   const spreadsheetId = '1dMklaBUmd7j4dD5Ufdc0BehDZ4UcwPiUaXh-L906XoM'; // Replace with your Spreadsheet ID
