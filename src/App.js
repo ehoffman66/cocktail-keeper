@@ -30,24 +30,28 @@ function App() {
         <h2 className="text-2xl font-bold mb-4">Search Cocktails</h2>
         <input
           type="text"
-          placeholder="Search by cocktail name..."
+          placeholder="Search by cocktail name/base sprit..."
           className="p-2 border rounded"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
-      {responseBody.filter(cocktail => cocktail['Cocktail'].toLowerCase().includes(searchTerm.toLowerCase())).map((cocktail, index) => (
+      {responseBody.filter(cocktail => 
+        (cocktail['Cocktail'] && cocktail['Cocktail'].toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (cocktail['Base Spirit'] && cocktail['Base Spirit'].toLowerCase().includes(searchTerm.toLowerCase()))
+      ).map((cocktail, index) => (
         <div key={index} className="bg-white rounded-lg shadow-md p-6 mb-4">
           <h2 className="text-2xl font-bold mb-4">{cocktail['Cocktail']} <span className="text-gray-600 bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 inline-block">{cocktail['Base Spirit']}</span></h2>
           <p className="text-gray-600 mb-2 font-bold">Ingredients:</p>
           <Listbox as="ul" className="mb-2">
             {cocktail['Ingredients'] && cocktail['Ingredients'].trim() !== '' ?
               cocktail['Ingredients'].replace(/[\[\]']+/g,'').split(',').map((ingredient, i) => (
-              <Listbox.Option as="li" key={i} className="text-gray-600 bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 inline-block">{ingredient.trim()}</Listbox.Option>              ))
+                <Listbox.Option as="li" key={i} className="text-gray-600 bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 inline-block">{ingredient.trim()}</Listbox.Option>
+              ))
               : <li className="text-gray-600">No ingredients listed</li>
             }
           </Listbox>
-        <p className="text-gray-600 font-bold">Garnish: {cocktail['Garnish']}</p>
+          <p className="text-gray-600 font-bold">Garnish: {cocktail['Garnish']}</p>
         </div>
       ))}
     </div>
