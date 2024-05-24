@@ -27,11 +27,12 @@ function App() {
   return (
     <div className="App grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 mt-4">
       <div className="bg-white rounded-lg shadow-md p-6 mb-4">
-        <h2 className="text-2xl font-bold mb-4">Search Cocktails</h2>
+        <h1 className="text-6xl font-bold mb-4">Cocktail Lab</h1>
+        <h2 className="text-xl font-bold mb-4 mt-5">Search Cocktails</h2>
         <input
           type="text"
-          placeholder="Search by cocktail name/base sprit..."
-          className="p-2 border rounded"
+          placeholder="Search by cocktail name or base sprit..."
+          className="p-2 border rounded-lg w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
