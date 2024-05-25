@@ -47,12 +47,16 @@ function App() {
           <Listbox as="ul" className="mb-2">
             {cocktail['Ingredients'] && cocktail['Ingredients'].trim() !== '' ?
               cocktail['Ingredients'].replace(/[\[\]']+/g,'').split(',').map((ingredient, i) => (
-                <Listbox.Option as="li" key={i} className="text-gray-600 bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 inline-block">{ingredient.trim()}</Listbox.Option>
+                <div key={i} className="block pl-4">
+                  <Listbox.Option as="li" className="text-gray-600 bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 inline-block">{ingredient.trim()}</Listbox.Option>
+                </div>
               ))
               : <li className="text-gray-600">No ingredients listed</li>
             }
           </Listbox>
-          <p className="text-gray-600 font-bold">Garnish: {cocktail['Garnish']}</p>
+          <p>
+            <span className="text-gray-600 font-bold">Garnish:</span> {cocktail['Garnish']}
+          </p>
         </div>
       ))}
     </div>
