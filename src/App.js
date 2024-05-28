@@ -44,16 +44,17 @@ function App() {
         <div key={index} className="bg-white rounded-lg shadow-md p-6 mb-4">
           <h2 className="text-2xl font-bold mb-4">{cocktail['Cocktail']} <span className="text-gray-600 bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 inline-block">{cocktail['Base Spirit']}</span></h2>
           <p className="text-gray-600 mb-2 font-bold">Ingredients:</p>
-          <Listbox as="ul" className="mb-2">
-            {cocktail['Ingredients'] && cocktail['Ingredients'].trim() !== '' ?
-              cocktail['Ingredients'].replace(/[\[\]']+/g,'').split(',').map((ingredient, i) => (
-                <div key={i} className="block pl-4">
-                  <Listbox.Option as="li" className="text-gray-600 bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 inline-block">{ingredient.trim()}</Listbox.Option>
-                </div>
-              ))
-              : <li className="text-gray-600">No ingredients listed</li>
-            }
-          </Listbox>
+            <Listbox as="ul" className="mb-2">
+              {cocktail['Ingredients'] && cocktail['Ingredients'].trim() !== '' ?
+                cocktail['Ingredients'].replace(/[\[\]']+/g,'').split(',').map((ingredient, i) => (
+                  <div key={i} className="block pl-4">
+                    <span className="text-lg pr-2">·</span>
+                    <Listbox.Option as="li" className="text-gray-600 bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 inline-block">{ingredient.trim()}</Listbox.Option>
+                  </div>
+                ))
+                : <li className="text-gray-600">No ingredients listed</li>
+              }
+            </Listbox>
           <p>
             <span className="text-gray-600 font-bold">Garnish:</span> {cocktail['Garnish']}
           </p>
