@@ -42,7 +42,12 @@ function App() {
         (cocktail['Base Spirit'] && cocktail['Base Spirit'].toLowerCase().includes(searchTerm.toLowerCase()))
       ).map((cocktail, index) => (
         <div key={index} className="bg-white rounded-lg shadow-md p-6 mb-4">
-          <h2 className="text-2xl font-bold mb-4">{cocktail['Cocktail']} <span className="text-gray-600 bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 inline-block">{cocktail['Base Spirit']}</span></h2>
+          <h2 className="text-2xl font-bold mb-4 inline-flex items-center">
+            {cocktail['Cocktail']} 
+            <span className="ml-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium" style={{backgroundColor: '#E98074', color: 'white'}}>
+              {cocktail['Base Spirit']}
+            </span>
+          </h2>
           <p className="text-gray-600 mb-2 font-bold">Ingredients:</p>
             <Listbox as="ul" className="mb-2">
               {cocktail['Ingredients'] && cocktail['Ingredients'].trim() !== '' ?
