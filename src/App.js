@@ -25,10 +25,14 @@ function App() {
   }, []);
 
   return (
-    <div className="App grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 mt-4">
+    <div className="App grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 mt-4" style={{backgroundColor: '#EAE7DC'}}>
       <div className="bg-white rounded-lg shadow-md p-6 mb-4">
-        <h1 className="text-6xl font-bold mb-4">Cocktail Lab</h1>
-        <h2 className="text-xl font-bold mb-4 mt-5">Search Cocktails</h2>
+        <div className="flex items-center mb-4">
+            <img src={process.env.PUBLIC_URL + '/images/boar.png'} alt="Pour Boar" className="w-16 h-16 mr-4" />          <div>
+            <h1 className="text-6xl font-bold">Pour Boar</h1>
+          </div>
+        </div>
+        <h2 className="text-xl font-bold mb-4 mt-5">Search Coktails</h2>
         <input
           type="text"
           placeholder="Search by cocktail name or base sprit..."
