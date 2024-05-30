@@ -56,11 +56,11 @@ function App() {
             </h2>
   
             <Tab.Group>
-              <Tab.List className="flex p-1 space-x-1 rounded-xl">
-                <Tab className={({ selected }) => selected ? 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg border-b-2 border-red-500' : 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg'} style={{color: '#E85A4F'}}>Ingredients</Tab>
-                <Tab className={({ selected }) => selected ? 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg border-b-2 border-red-500' : 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg'} style={{color: '#E85A4F'}}>Instructions</Tab>
-                <Tab className={({ selected }) => selected ? 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg border-b-2 border-red-500' : 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg'} style={{color: '#E85A4F'}}>Notes</Tab>
-              </Tab.List>
+            <Tab.List className="flex p-1 space-x-1 rounded-xl">
+              <Tab className={({ selected }) => selected ? 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg border-b-2 border-red-500 outline-none' : 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg outline-none'} style={{color: '#E85A4F'}}>Ingredients</Tab>
+              <Tab className={({ selected }) => selected ? 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg border-b-2 border-red-500 outline-none' : 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg outline-none'} style={{color: '#E85A4F'}}>Instructions</Tab>
+              <Tab className={({ selected }) => selected ? 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg border-b-2 border-red-500 outline-none' : 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg outline-none'} style={{color: '#E85A4F'}}>Notes</Tab>
+            </Tab.List>
               <Tab.Panels className="mt-1">
                 <Tab.Panel>
                   <ul className="mb-2">
@@ -78,7 +78,9 @@ function App() {
                   </p>
                 </Tab.Panel>
                 <Tab.Panel>
-                  <p>{cocktail['Instructions']}</p>
+                  {cocktail && cocktail['Instructions'] && cocktail['Instructions'].split(';').map((instruction, i) => (
+                    <p key={i}>{instruction.trim()}</p>
+                  ))}
                 </Tab.Panel>
                 <Tab.Panel>
                   <p>{cocktail['Notes']}</p>
