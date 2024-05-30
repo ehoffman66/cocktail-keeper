@@ -7,6 +7,10 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
+    document.title = "Pour Boar Cocktails";
+  }, []);
+
+  useEffect(() => {
     if (!navigator.onLine) {
       console.error('Browser is offline');
     } else {
