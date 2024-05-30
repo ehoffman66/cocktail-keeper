@@ -78,10 +78,10 @@ function App() {
                   </p>
                 </Tab.Panel>
                 <Tab.Panel>
-                  <p>Content for Tab 2</p>
+                  <p>{cocktail['Instructions']}</p>
                 </Tab.Panel>
                 <Tab.Panel>
-                  <p>Content for Tab 3</p>
+                  <p>{cocktail['Notes']}</p>
                 </Tab.Panel>
               </Tab.Panels>
             </Tab.Group>
