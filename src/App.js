@@ -77,11 +77,11 @@ function App() {
                     <span className="text-gray-600 font-bold">Garnish:</span> {cocktail['Garnish']}
                   </p>
                 </Tab.Panel>
-                <Tab.Panel>
-                  {cocktail && cocktail['Instructions'] && cocktail['Instructions'].split(';').map((instruction, i) => (
-                    <p key={i}>{instruction.trim()}</p>
-                  ))}
-                </Tab.Panel>
+                  <Tab.Panel>
+                    {cocktail && cocktail['Instructions'] && cocktail['Instructions'].split(';').map((instruction, i) => (
+                      <p key={i} className="mb-2">{instruction.trim()}</p>
+                    ))}
+                  </Tab.Panel>
                 <Tab.Panel>
                   <p>{cocktail['Notes']}</p>
                 </Tab.Panel>
