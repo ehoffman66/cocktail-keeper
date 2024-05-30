@@ -66,21 +66,21 @@ function App() {
               <Tab className={({ selected }) => selected ? 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg border-b-2 border-red-500 outline-none' : 'w-full py-2.5 text-sm leading-5 font-bold rounded-lg outline-none'} style={{color: '#E85A4F'}}>Notes</Tab>
             </Tab.List>
               <Tab.Panels className="mt-1">
-                <Tab.Panel>
-                  <ul className="mb-2">
-                    {cocktail['Ingredients'] && cocktail['Ingredients'].trim() !== '' ?
-                      cocktail['Ingredients'].replace(/[\[\]']+/g,'').split(',').map((ingredient, i) => (
-                        <div key={i}>
-                          <li className="text-gray-600 bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 inline-block">{ingredient.trim()}</li>
-                        </div>
-                      ))
-                      : <li className="text-gray-600">No ingredients listed</li>
-                    }
-                  </ul>
-                  <p>
-                    <span className="text-gray-600 font-bold">Garnish:</span> {cocktail['Garnish']}
-                  </p>
-                </Tab.Panel>
+                  <Tab.Panel>
+                    <ul className="list-disc pl-5">
+                      {cocktail['Ingredients'] && cocktail['Ingredients'].trim() !== '' ?
+                        cocktail['Ingredients'].replace(/[\[\]']+/g,'').split(',').map((ingredient, i) => (
+                          <li key={i} className="text-gray-600 mr-2 mt-2 mb-4">
+                            <span className="bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700">{ingredient.trim()}</span>
+                          </li>
+                        ))
+                        : <li className="text-gray-600">No ingredients listed</li>
+                      }
+                    </ul>
+                    <p>
+                      <span className="text-gray-600 font-bold">Garnish:</span> {cocktail['Garnish']}
+                    </p>
+                  </Tab.Panel>
                   <Tab.Panel>
                     {cocktail && cocktail['Instructions'] && cocktail['Instructions'].split(';').map((instruction, i) => (
                       <p key={i} className="mb-2">{instruction.trim()}</p>
