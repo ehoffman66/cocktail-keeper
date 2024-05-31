@@ -1,10 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { Listbox } from '@headlessui/react';
-import { Tab } from '@headlessui/react';
+import React, { Fragment, useEffect, useState, useRef } from 'react';
+import {Tab, Dialog, Transition } from '@headlessui/react';
+import { CloseButton, Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 
 function App() {
   const [responseBody, setResponseBody] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+
+  const buttonRef = useRef();
+
+  const handleAddCocktail = (e) => {
+    e.preventDefault();
+    console.log('Add cocktail form submitted');
+
+    // Simulate an async operation (e.g., API call)
+    new Promise((resolve) => {
+      console.log('handleAddCocktail called');
+      resolve();
+    })
+    .then(() => {
+      // Simulate a click on the PopoverButton to close the popover
+      if (buttonRef.current) {
+        buttonRef.current.click();
+      }
+    });
+  }
 
   useEffect(() => {
     document.title = "Pour Boar Cocktails";
@@ -46,7 +66,36 @@ function App() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+          
+          <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
+            <PopoverButton onClick={() => setIsOpen(true)} style={{backgroundColor: '#E85A4F'}} className="mt-4 ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-focus-ring">
+              Add Cocktail
+            </PopoverButton>
+            <PopoverPanel className="absolute z-10">
+              <div className="p-4 bg-white rounded shadow-xl w-96">
+                <form className="text-sm text-gray-500" onSubmit={handleAddCocktail} onClick={(e) => e.stopPropagation()}>
+                  <label className="block font-bold">
+                    Cocktail Name:
+                    <input type="text" name="name" className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-focus-ring focus:ring-opacity-50" />
+                  </label>
+                  <label className="block mt-4 font-bold">
+                    Ingredients:
+                    <textarea name="ingredients" className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-focus-ring focus:ring-opacity-50"></textarea>
+                  </label>
+                  <label className="block mt-4 font-bold">
+                    Instructions:
+                    <textarea name="instructions" className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-focus-ring focus:ring-opacity-50"></textarea>
+                  </label>
+                  <button type="submit" style={{backgroundColor: '#E85A4F'}} className="mt-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-focus-ring">
+                    Submit
+                  </button>
+                </form>
+              </div>
+            </PopoverPanel>
+          </Popover>
+
         </div>
+        
         {responseBody.filter(cocktail => 
           (cocktail['Cocktail'] && cocktail['Cocktail'].toLowerCase().includes(searchTerm.toLowerCase())) ||
           (cocktail['Base Spirit'] && cocktail['Base Spirit'].toLowerCase().includes(searchTerm.toLowerCase()))
