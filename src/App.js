@@ -96,10 +96,13 @@ function App() {
 
         </div>
         
-        {responseBody.filter(cocktail => 
-          (cocktail['Cocktail'] && cocktail['Cocktail'].toLowerCase().includes(searchTerm.toLowerCase())) ||
-          (cocktail['Base Spirit'] && cocktail['Base Spirit'].toLowerCase().includes(searchTerm.toLowerCase()))
-        ).map((cocktail, index) => (
+        {responseBody
+          .filter(cocktail => 
+            (cocktail['Cocktail'] && cocktail['Cocktail'].toLowerCase().includes(searchTerm.toLowerCase())) ||
+            (cocktail['Base Spirit'] && cocktail['Base Spirit'].toLowerCase().includes(searchTerm.toLowerCase()))
+          )
+          .filter(cocktail => cocktail['Ingredients'] && cocktail['Ingredients'].trim() !== '')
+          .map((cocktail, index) => (
           <div key={index} className="bg-white rounded-lg shadow-md p-6 mb-4">
             <h2 className="text-2xl font-bold mb-4 inline-flex items-center">
               {cocktail['Cocktail']} 
