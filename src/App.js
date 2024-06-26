@@ -103,12 +103,14 @@ function App() {
           )
           .filter(cocktail => cocktail['Ingredients'] && cocktail['Ingredients'].trim() !== '')
           .map((cocktail, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-md p-6 mb-4">
-            <h2 className="text-2xl font-bold mb-4 inline-flex items-center">
-              {cocktail['Cocktail']} 
-              <span className="ml-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium" style={{backgroundColor: '#E98074', color: 'white'}}>
-                {cocktail['Base Spirit']}
-              </span>
+          <div key={index} className="bg-white rounded-lg shadow-md p-6 mb-1">
+            <h2 className="text-5xl font-bold mb-4">
+              {cocktail['Cocktail']}
+              <div>
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-sm font-medium" style={{backgroundColor: '#E98074', color: 'white'}}>
+                  {cocktail['Base Spirit']}
+                </span>
+              </div>
             </h2>
   
             <Tab.Group>
