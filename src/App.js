@@ -50,52 +50,27 @@ function App() {
   }, []);
   
     return (
-      <div className="App grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 mt-4" style={{backgroundColor: '#EAE7DC'}}>
-        <div className="bg-white rounded-lg shadow-md p-6 mb-4">
-          <div className="flex items-center mb-4">
-            <img src={process.env.PUBLIC_URL + '/images/boar.png'} alt="Pour Boar" className="w-16 h-16 mr-4" />
+      <div className="App" style={{backgroundColor: '#EAE7DC'}}> 
+        <div className="bg-white rounded-lg shadow-md p-6 mb-4 text-center">
+          <div className="flex justify-center mb-4">
+            <img src={process.env.PUBLIC_URL + '/images/boar.png'} alt="Pour Boar" className="w-32 h-32 mr-4" />
             <div>
-              <h1 className="text-6xl font-bold">Pour Boar</h1>
+              <h1 className="text-9xl font-bold">Pour Boar</h1>
             </div>
           </div>
           <h2 className="text-xl font-bold mb-4 mt-5">Search Cocktails</h2>
-          <input
-            type="text"
-            placeholder="Search by cocktail name or base spirit..."
-            className="p-2 border rounded-lg w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          
-          <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
-            <PopoverButton onClick={() => setIsOpen(true)} style={{backgroundColor: '#E85A4F'}} className="mt-4 ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-focus-ring">
-              Add Cocktail
-            </PopoverButton>
-            <PopoverPanel className="absolute z-10">
-              <div className="p-4 bg-white rounded shadow-xl w-96">
-                <form className="text-sm text-gray-500" onSubmit={handleAddCocktail} onClick={(e) => e.stopPropagation()}>
-                  <label className="block font-bold">
-                    Cocktail Name:
-                    <input type="text" name="name" className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-focus-ring focus:ring-opacity-50" />
-                  </label>
-                  <label className="block mt-4 font-bold">
-                    Ingredients:
-                    <textarea name="ingredients" className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-focus-ring focus:ring-opacity-50"></textarea>
-                  </label>
-                  <label className="block mt-4 font-bold">
-                    Instructions:
-                    <textarea name="instructions" className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-focus-ring focus:ring-opacity-50"></textarea>
-                  </label>
-                  <button type="submit" style={{backgroundColor: '#E85A4F'}} className="mt-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-focus-ring">
-                    Submit
-                  </button>
-                </form>
-              </div>
-            </PopoverPanel>
-          </Popover>
-
+          <div className="max-w-xs mx-auto">
+            <input
+              type="text"
+              placeholder="Search by cocktail name or base spirit..."
+              className="p-2 border rounded-lg w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
         </div>
         
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 mt-4" style={{backgroundColor: '#EAE7DC'}}>
         {responseBody
           .filter(cocktail => 
             (cocktail['Cocktail'] && cocktail['Cocktail'].toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -148,6 +123,7 @@ function App() {
   
           </div>
         ))}
+      </div>
       </div>
     );
   }
