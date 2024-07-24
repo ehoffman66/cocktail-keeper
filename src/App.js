@@ -110,6 +110,10 @@ function App() {
                       <div className="flex-1">
                         <span className="text-gray-600 font-bold" style={{fontSize: '0.75rem'}}>Garnish:</span>
                         <p>{cocktail['Garnish']}</p>
+                        <span className="text-gray-600 font-bold" style={{fontSize: '0.75rem'}}>Glass:</span>
+                        <p>{cocktail['Glass']}</p>
+                        <span className="text-gray-600 font-bold" style={{fontSize: '0.75rem'}}>Served:</span>
+                        <p>{cocktail['Served']}</p>
                       </div>
                     </div>
                   </Tab.Panel>
