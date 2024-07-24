@@ -107,9 +107,10 @@ function App() {
                           : <li className="text-gray-600">No ingredients listed</li>
                         }
                       </ul>
-                      <p className="flex-1">
-                        <span className="text-gray-600 font-bold">Garnish:</span> {cocktail['Garnish']}
-                      </p>
+                      <div className="flex-1">
+                        <span className="text-gray-600 font-bold" style={{fontSize: '0.75rem'}}>Garnish:</span>
+                        <p>{cocktail['Garnish']}</p>
+                      </div>
                     </div>
                   </Tab.Panel>
                   <Tab.Panel>
