@@ -96,19 +96,21 @@ function App() {
             </Tab.List>
               <Tab.Panels className="mt-1">
                   <Tab.Panel>
-                    <ul className="list-disc pl-5">
-                      {cocktail['Ingredients'] && cocktail['Ingredients'].trim() !== '' ?
-                        cocktail['Ingredients'].replace(/[\[\]']+/g,'').split(',').map((ingredient, i) => (
-                          <li key={i} className="text-gray-600 mr-2 mt-2 mb-4">
-                            <span className="bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700">{ingredient.trim()}</span>
-                          </li>
-                        ))
-                        : <li className="text-gray-600">No ingredients listed</li>
-                      }
-                    </ul>
-                    <p>
-                      <span className="text-gray-600 font-bold">Garnish:</span> {cocktail['Garnish']}
-                    </p>
+                    <div className="flex justify-start">
+                      <ul className="list-disc pl-5 flex-1">
+                        {cocktail['Ingredients'] && cocktail['Ingredients'].trim() !== '' ?
+                          cocktail['Ingredients'].replace(/[\[\]']+/g,'').split(',').map((ingredient, i) => (
+                            <li key={i} className="text-gray-600 mr-2 mt-2 mb-4">
+                              <span className="bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700">{ingredient.trim()}</span>
+                            </li>
+                          ))
+                          : <li className="text-gray-600">No ingredients listed</li>
+                        }
+                      </ul>
+                      <p className="flex-1">
+                        <span className="text-gray-600 font-bold">Garnish:</span> {cocktail['Garnish']}
+                      </p>
+                    </div>
                   </Tab.Panel>
                   <Tab.Panel>
                     {cocktail && cocktail['Instructions'] && cocktail['Instructions'].split(';').map((instruction, i) => (
