@@ -63,7 +63,7 @@ function App() {
             <input
               type="text"
               placeholder="Search by cocktail name or base spirit..."
-              className="p-2 border rounded-lg w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+              className="p-2 border-4 border-gray-500 rounded-lg w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
