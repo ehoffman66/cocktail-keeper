@@ -1,30 +1,9 @@
-import React, { Fragment, useEffect, useState, useRef } from 'react';
-import {Tab, Dialog, Transition } from '@headlessui/react';
-import { CloseButton, Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
+import React, { useEffect, useState } from 'react';
+import {Tab } from '@headlessui/react';
 
 function App() {
   const [responseBody, setResponseBody] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
-
-  const buttonRef = useRef();
-
-  const handleAddCocktail = (e) => {
-    e.preventDefault();
-    console.log('Add cocktail form submitted');
-
-    // Simulate an async operation (e.g., API call)
-    new Promise((resolve) => {
-      console.log('handleAddCocktail called');
-      resolve();
-    })
-    .then(() => {
-      // Simulate a click on the PopoverButton to close the popover
-      if (buttonRef.current) {
-        buttonRef.current.click();
-      }
-    });
-  }
 
   useEffect(() => {
     document.title = "Pour Boar Cocktails";
