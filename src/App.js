@@ -37,7 +37,6 @@ function App() {
               <h1 className="text-9xl font-bold">Pour Boar</h1>
             </div>
           </div>
-          <h2 className="text-xl font-bold mb-4 mt-5">Search Cocktails</h2>
           <div className="max-w-xs mx-auto">
             <input
               type="text"
