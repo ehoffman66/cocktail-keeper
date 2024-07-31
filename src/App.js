@@ -60,9 +60,11 @@ function App() {
             <h2 className="text-5xl font-bold mb-4">
               {cocktail['Cocktail']}
               <div>
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-sm font-medium" style={{backgroundColor: '#E98074', color: 'white'}}>
-                  {cocktail['Base Spirit']}
-                </span>
+                {cocktail['Base Spirit'] && cocktail['Base Spirit'].split(',').map((spirit, i) => (
+                  <span key={i} className="inline-flex items-center px-2 py-0.5 rounded-full text-sm font-medium mr-2" style={{backgroundColor: '#E98074', color: 'white'}}>
+                    {spirit.trim()}
+                  </span>
+                ))}
               </div>
             </h2>
   
